@@ -7,8 +7,8 @@ mydata$Date<- as.Date(strptime(mydata$Date, "%d/%m/%Y"))
 # filter data
 mydata<-filter(mydata,Date=='2007-2-1'|Date=='2007-2-2')
 
-#plot4
 
+# convert date and data to numeric
 datetime<-strptime(paste(mydata$Date,mydata$Time),"%Y-%m-%d %H:%M:%S")
 Sub_met_1 <- as.numeric(mydata$Sub_metering_1)
 Sub_met_2 <- as.numeric(mydata$Sub_metering_2)
@@ -16,12 +16,13 @@ Sub_met_3 <- as.numeric(mydata$Sub_metering_3)
 globalActivePower <- as.numeric(mydata$Global_active_power)
 voltage<-as.numeric(mydata$Voltage)
 globalReactivePower<-as.numeric(mydata$Global_reactive_power)
+# show the date as English date 
+Sys.setlocale(,"C")  
 
-Sys.setlocale(,"C")  # show the date as English date 
+#plot4
 par(mfrow=c(2,2), mar=c(4,4,2,1), oma=c(0,0,2,0))
-
 with(datetime,{
-  #plot2
+  #plot1
   plot(datetime, globalActivePower, type="l", xlab="", ylab="Global Active Power")
   
   #plot2
