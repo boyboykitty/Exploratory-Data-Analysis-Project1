@@ -1,7 +1,10 @@
 
 library(dplyr)
+# load date
 mydata<-read.table("./data/household_power_consumption.txt", header = T,sep=";",nrows =70000,stringsAsFactors =FALSE)
 mydata$Date<- as.Date(strptime(mydata$Date, "%d/%m/%Y"))
+
+# filter data
 mydata<-filter(mydata,Date=='2007-2-1'|Date=='2007-2-2')
 
 #plot2
